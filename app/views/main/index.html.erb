@@ -1,15 +1,42 @@
+<%= stylesheet_link_tag 'main' %>
 
-<p style="color: green"><%= notice %></p>
+<header>
+    <nav class="navigation">
+        <%= link_to root_path, class: 'logo' do %>
+            Task<span>Trackr</span>
+        <% end %>
+        <ul class="nav-menu">
+            <li class="nav-item"><%= link_to "Sign Up", sign_up_path %></li>
+            <li class="nav-item"><%= link_to "Login", login_path %></li>
+            <li class="nav-item"><a href="https://github.com/dev-Gois">Contact</a></li>
+        </ul>
+        <div class="menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
 
-<h1>Teste</h1>
+<main>
+    <section class="home">
+        <div class="home-text">
+            <h4 class="text-h4">Welcome to TaskTrackr</h4>
+            <div class="text-h1">
+                <span class="text-first"></span>
+                <span class="text-sec">your routine in a simple way.</span>
+            </div>
+            <p>TaskTrackr offers a seamless experience to help you stay on top of your tasks, streamline your workflow, and accomplish your goals with ease. Whether you're a busy professional, a student, or someone juggling multiple responsibilities, we've got you covered.</p>
+            <%= link_to "Start Now!", sign_up_path, class: "home-btn" %>
+        </div>
 
-Id do user: <%= session[:user_id] %>
+        <div class="home-img">
+            <%= image_tag('rocket')%>
+        </div>
+    </section>
+</main>
 
-<br>    
-<%= link_to "Criar novo usuário", sign_up_path %>
-<br>
-<%= link_to "Login", login_path %>
-<br>
-<%= button_to "Logout", logout_path, method: :delete %>
-<br>
-<%= link_to "Tasks", tasks_path %>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<%= javascript_include_tag 'vanilla-tilt.js' %>
+<%= javascript_include_tag 'main.js' %>
