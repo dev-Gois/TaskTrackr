@@ -1,0 +1,15 @@
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Teste</h1>
+
+Id do user: <%= session[:user_id] %>
+
+<br>    
+<%= link_to "Criar novo usuário", sign_up_path %>
+<br>
+<%= link_to "Login", login_path %>
+<br>
+<%= button_to "Logout", logout_path, method: :delete %>
+<br>
+<%= link_to "Tasks", tasks_path %>
