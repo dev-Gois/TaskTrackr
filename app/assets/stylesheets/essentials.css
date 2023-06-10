@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --purple: #a400c5;
+    --darkerPurple: #7c1092;
+    --white: #fff;
+    --black: #161616;
+    --grey: #232323;
+}
+
+body {
+    color: var(--white);
+    overflow-x: hidden;
+    background: linear-gradient(to bottom right, #000000, #101010, #202020, #a400c5);
+}

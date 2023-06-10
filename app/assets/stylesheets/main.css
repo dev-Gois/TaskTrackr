@@ -1,25 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    list-style: none;
-    text-decoration: none;
-}
+@import 'essentials.css';
 
-:root {
-    --purple: #a400c5;
-    --darkerPurple: #7c1092;
-    --white: #fff;
-    --black: #161616;
-    --grey: #232323;
-}
-
-body {
-    color: var(--white);
-    overflow-x: hidden;
-    background: linear-gradient(to bottom right, #000000, #101010, #202020, #a400c5);
-}
 
 .navigation {
     display: flex;
@@ -52,6 +32,7 @@ body {
     font-size: 17px;
     font-weight: 500;
     transition: all 0.5s;
+    cursor: pointer;
 }
 
 .navigation ul li a:hover{
@@ -152,7 +133,7 @@ span {
         background: var(--black);
         gap: -10px;
         transition: 0.3s;
-        z-index: 999;
+        z-index: 101;
     }
     .nav-menu.on{
         right: 0;
