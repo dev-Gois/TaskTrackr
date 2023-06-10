@@ -98,6 +98,10 @@ body {
     line-height: 4rem;
 }
 
+.rocket {
+    transition: all 1s;
+}
+
 span {
     font-weight: 600;
 }
@@ -148,6 +152,7 @@ span {
         background: var(--black);
         gap: -10px;
         transition: 0.3s;
+        z-index: 999;
     }
     .nav-menu.on{
         right: 0;
