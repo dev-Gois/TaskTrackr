@@ -10,5 +10,6 @@ function errorToast(description) {
     iziToast.error({
         title: 'Erro!',
         message: description,
+        position: 'topRight'
     });
 }
