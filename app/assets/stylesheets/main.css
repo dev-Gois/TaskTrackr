@@ -1,6 +1,9 @@
 @import 'essentials.css';
 
 
+body {
+    color: var(--white);
+}
 .navigation {
     display: flex;
     align-items: center;

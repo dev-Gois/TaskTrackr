@@ -16,7 +16,6 @@
 }
 
 body {
-    color: var(--white);
     overflow-x: hidden;
     background: linear-gradient(to bottom right, #000000, #101010, #202020, #a400c5);
 }

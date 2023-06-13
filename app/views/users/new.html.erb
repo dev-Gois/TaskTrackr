@@ -1,1 +1,36 @@
 <%= stylesheet_link_tag 'user_form' %>
+
+<div class="form-wrap">
+	<div class="tabs">
+		<h3 class="signup-tab"><a class="active" href="#signup-tab-content">Sign Up</a></h3>
+		<h3 class="login-tab"><a href="#login-tab-content">Login</a></h3>
+	</div>
+
+	<div class="tabs-content">
+		<div id="signup-tab-content" class="active">
+            <%= form_with model: @user, url: sign_up_path do |f| %>
+                <%= f.text_field :email, placeholder: 'Email', class: 'input', autocomplete: 'off' %>
+				<%= f.password_field :password, placeholder: 'Password', class: 'input', autocomplete: 'off' %>
+				<%= f.password_field :password_confirmation, placeholder: 'Confirm your password', class: 'input', autocomplete: 'off' %>
+				<%= f.submit 'Sign Up', class: 'button' %>
+            <% end %>
+		    <div class="help-text">
+		        <p>By signing up, you agree to our</p>
+			    <p><a href="">Terms of service</a></p>
+		    </div>
+		</div>
+
+		<div id="login-tab-content">
+            <%= form_with url: login_path do |f| %>
+                <%= f.text_field :email, placeholder: 'Email', class: 'input', autocomplete: 'off' %>
+                <%= f.password_field :password, placeholder: 'Password', class: 'input', autocomplete: 'off' %>
+                <%= f.submit 'Log in', class: 'button' %>
+            <% end %>
+		<div class="help-text">
+		    <p><a href="#">Forget your password?</a></p>
+		</div>
+		</div>
+	</div>
+</div>
+
+<%= javascript_include_tag "user_form.js" %>

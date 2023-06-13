@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect_to tasks_path, notice: 'Login feito com sucesso!'
         else
-            flash.now[:alert] = 'Email ou senha invalidos'
-            render :new
+            flash[:alert]= 'Email ou senha invalidos!'
+            redirect_to sign_up_path
         end 
     end
 
