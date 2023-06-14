@@ -14,14 +14,14 @@ TaskTrackr is built using the following technologies:
 
 TaskTrackr offers the following key features:
 
-• User registration and authentication: Create an account, log in, and secure your tasks.
-• Task creation and management: Add, edit, and delete tasks with ease.
-• Task categorization: Organize tasks into categories for better organization.
-• Task prioritization: Set priorities for tasks to ensure important ones are not overlooked.
-• Due dates and reminders: Assign due dates and receive reminders for upcoming tasks.
-• Progress tracking: Monitor your progress and mark tasks as completed.
-• Search and filtering: Quickly find tasks based on keywords or specific criteria.
-• User-friendly interface: Intuitive design and smooth user experience for seamless task management.
+* User registration and authentication: Create an account, log in, and secure your tasks.
+* Task creation and management: Add, edit, and delete tasks with ease.
+* Task categorization: Organize tasks into categories for better organization.
+* Task prioritization: Set priorities for tasks to ensure important ones are not overlooked.
+* Due dates and reminders: Assign due dates and receive reminders for upcoming tasks.
+* Progress tracking: Monitor your progress and mark tasks as completed.
+* Search and filtering: Quickly find tasks based on keywords or specific criteria.
+* User-friendly interface: Intuitive design and smooth user experience for seamless task management.
 
 ## 📦 Libraries
 
