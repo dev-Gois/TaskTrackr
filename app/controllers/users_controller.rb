@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
         if @user.email.blank? || @user.password.blank? || @user.password_confirmation.blank?
             flash[:alert] = 'Preencha todos os campos'
-            render :new
+            render :new 
         elsif User.exists?(email: @user.email)
             flash[:alert] = 'Email ja existente'
             render :new
