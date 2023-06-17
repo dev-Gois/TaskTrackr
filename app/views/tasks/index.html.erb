@@ -6,24 +6,66 @@
     
 <% end %>
 
+<div class="ui sidebar inverted vertical menu" id="menuLateral">
+    <a class="item">
+        1
+    </a>
+</div>
+
 <div class="pusher">
     <div class="full height">
         <div class="following bar">
-                <div class="ui massive secondary violet network menu inverted">
-                    <div class="item">
-                        <i class="bordered inverted violet rocket icon  "></i>
-                        TaskTrackr
-                    </div>
+            <div class="ui massive secondary violet network menu inverted">
+                <div class="item">
+                    <i class="bordered inverted violet rocket icon"></i>
+                    TaskTrackr
+                </div>
+                <a class="view-ui item" onclick="toggleSidebar()">
+                    <i class="sidebar icon"></i>
+                    Menu
+                </a>
+                <div class="ui big inverted segment center aligned centered"> <!-- Adicionei a classe "center aligned" aqui -->
+                    <i class="tasks icon"></i>
+                    Current: Today
+                </div>
+                <div class="right menu inverted">
                     <a class="view-ui item">
-                        <i class="sidebar icon"></i>
-                        Menu
+                        <i class="cogs icon"></i>
+                        Settings
                     </a>
-                    <div class="right menu inverted">
-                        <a class="view-ui item">
-                            <i class="cogs icon"></i>
-                            Settings
-                        </a>
+                </div>
+            </div>
+        </div>
+        <div class="ui massive segment">
+            <div class="ui center aligned icon header">
+                <i class="rocket icon"></i>
+                <div class="content">Add a task and conquer your day!</div>
+            </div>
+            <form class="ui huge form">
+            <div class="ui field fluid icon transparent input">
+                    <input type="text" placeholder="Create your tasks here...">
+                <i class="sticky note icon"></i>
+            </div>
+            </form>
+        </div>
+        <div class="ui massive segment">
+            <h1 class="ui header centered">Tasks</h1>
+            <div class="ui divider"></div>
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Task Name</div>
+                        <div class="meta">List</div>
+                        <div class="description">Description ai l0rem pisulno</div>
                     </div>
+                    <div class="extra content">
+                        <div class="ui buttons">
+                            <button class="ui green basic button">Complete</button>
+                            <button class="ui blue basic button">Edit</button>
+                            <button class="ui red basic button">Delete</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

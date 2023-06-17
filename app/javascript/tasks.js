@@ -1,3 +1,3 @@
 function toggleSidebar() {
-    $('.ui.sidebar').sidebar('toggle');
+    $('#menuLateral').sidebar('toggle');
 }
