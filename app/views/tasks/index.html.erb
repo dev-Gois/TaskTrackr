@@ -1,14 +1,31 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'tasks.css' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    
+<% end %>
 
-<h1>Tasks</h1>
-
-<div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
-  <% end %>
+<div class="pusher">
+    <div class="full height">
+        <div class="following bar">
+                <div class="ui massive secondary violet network menu inverted">
+                    <div class="item">
+                        <i class="bordered inverted violet rocket icon  "></i>
+                        TaskTrackr
+                    </div>
+                    <a class="view-ui item">
+                        <i class="sidebar icon"></i>
+                        Menu
+                    </a>
+                    <div class="right menu inverted">
+                        <a class="view-ui item">
+                            <i class="cogs icon"></i>
+                            Settings
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<%= link_to "New task", new_task_path %>
+<%= javascript_include_tag 'tasks' %>
