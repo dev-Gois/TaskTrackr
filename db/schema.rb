@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_153133) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_223243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_153133) do
     t.index ["task_id"], name: "index_comments_on_task_id"
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
   create_table "subtasks", force: :cascade do |t|
     t.string "description"
     t.bigint "task_id", null: false
@@ -30,14 +38,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_153133) do
     t.index ["task_id"], name: "index_subtasks_on_task_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.string "color"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "repeat"
     t.date "date"
+    t.boolean "completed", default: false
+    t.boolean "favorited", default: false
+    t.bigint "tag_id"
+    t.bigint "list_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_tasks_on_list_id"
+    t.index ["tag_id"], name: "index_tasks_on_tag_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -49,6 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_153133) do
   end
 
   add_foreign_key "comments", "tasks"
+  add_foreign_key "lists", "users"
   add_foreign_key "subtasks", "tasks"
+  add_foreign_key "tags", "users"
   add_foreign_key "tasks", "users"
 end

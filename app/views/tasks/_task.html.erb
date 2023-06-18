@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="content">
+
+        <% if task.tag %>
+        <div class="ui right floated <%= task.tag.color %> label">Matheus</div>
+        <% end %>
+
+        <div class="header"><%= task.title %></div>
+
+        <% if task.list %>
+        <div class="meta"><%= task.list %></div>
+        <% else %>
+        <div class="meta">None</div>
+        <% end %>
+
+        <div class="description"><%= task.description%></div>
+    </div>
+    <div class="extra content">
+        <div class="ui buttons">
+            <button class="ui green basic button">Complete</button>
+            <button class="ui blue basic button">Edit</button>
+            <%= button_to "Delete", task_path(task.id), method: :delete, class: "ui red basic button" %>
+        </div>
+    </div>
+</div>

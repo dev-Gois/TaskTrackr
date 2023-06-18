@@ -5,6 +5,10 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.text :description
       t.string :repeat
       t.date :date
+      t.boolean :completed, default: false
+      t.boolean :favorited, default: false
+      t.references :tag, null: true, default: nil
+      t.references :list, null: true, default: nil
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

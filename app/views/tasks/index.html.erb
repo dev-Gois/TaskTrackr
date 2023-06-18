@@ -6,10 +6,44 @@
     
 <% end %>
 
-<div class="ui sidebar inverted vertical menu" id="menuLateral">
+<div class="ui left vertical inverted large sidebar labeled icon menu" id="menuLateral">
     <a class="item">
-        1
+        <i class="calendar times outline icon"></i>
+        No date
     </a>
+    <a class="item">
+        <i class="calendar outline icon"></i>
+        Today
+    </a>
+    <a class="item">
+        <i class="calendar minus outline icon"></i>
+        This week
+    </a>
+    <a class="item">
+        <i class="calendar alternate outline icon"></i>
+        This month
+    </a>
+    <a class="item">
+        <i class="star icon"></i>
+        Favorites
+    </a>
+    <a class="item">
+        <i class="redo alternate icon"></i>
+        Recurring
+    </a>
+    <a class="item">
+        <i class="clock icon"></i>
+        Overdue
+    </a>
+    <a class="item">
+        <i class="th list icon"></i>
+        All tasks
+    </a>
+    <a class="item">
+        <i class="calendar plus icon"></i>
+        Create new list
+    </a>
+    
 </div>
 
 <div class="pusher">
@@ -20,19 +54,30 @@
                     <i class="bordered inverted violet rocket icon"></i>
                     TaskTrackr
                 </div>
-                <a class="view-ui item" onclick="toggleSidebar()">
+                <a class="ui item" onclick="toggleSidebar()">
                     <i class="sidebar icon"></i>
                     Menu
                 </a>
                 <div class="ui big inverted segment center aligned centered"> <!-- Adicionei a classe "center aligned" aqui -->
-                    <i class="tasks icon"></i>
+                    <i class="archive icon"></i>
                     Current: Today
                 </div>
                 <div class="right menu inverted">
-                    <a class="view-ui item">
-                        <i class="cogs icon"></i>
-                        Settings
-                    </a>
+                    <div class="ui pointing dropdown item" id="accountDropdown">
+                        <i class="user circle icon"></i>
+                        Account
+                        <div class="menu">
+                            <a class="item">
+                                <i class="cog icon"></i>
+                                Settings
+                            </a>
+                            <a class="item">
+                                <i class="power off icon"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -41,33 +86,22 @@
                 <i class="rocket icon"></i>
                 <div class="content">Add a task and conquer your day!</div>
             </div>
-            <form class="ui huge form">
+            <%= form_with(url: tasks_path, html: { class: 'ui huge form' }) do |f|%>
             <div class="ui field fluid icon transparent input">
-                    <input type="text" placeholder="Create your tasks here...">
+                <%= f.text_field :title, placeholder: 'Create your tasks here...'%>
                 <i class="sticky note icon"></i>
             </div>
-            </form>
+            <% end %>
         </div>
         <div class="ui massive segment">
             <h1 class="ui header centered">Tasks</h1>
             <div class="ui divider"></div>
             <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header">Task Name</div>
-                        <div class="meta">List</div>
-                        <div class="description">Description ai l0rem pisulno</div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui buttons">
-                            <button class="ui green basic button">Complete</button>
-                            <button class="ui blue basic button">Edit</button>
-                            <button class="ui red basic button">Delete</button>
-                        </div>
-                    </div>
-                </div>
+                <% @tasks.each do |task| %>
+                <%= render task %>
+                <% end %>
             </div>
         </div>
     </div>
 </div>
-<%= javascript_include_tag 'tasks' %>
+<%= javascript_include_tag 'tasks.js' %>

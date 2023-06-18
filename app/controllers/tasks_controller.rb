@@ -25,14 +25,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = session[:user_id]
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      redirect_to tasks_path, notice: 'Task created!'
+    else
+      redirect_to tasks_path, alert: 'Erro: ' + @task.errors.full_messages.join(', ')
     end
   end
 
@@ -67,6 +63,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :repeat, :date, :user_id)
+      params.permit(:title)
     end
 end
