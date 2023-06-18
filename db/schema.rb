@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_223243) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "repeat"
     t.date "date"
     t.boolean "completed", default: false
     t.boolean "favorited", default: false

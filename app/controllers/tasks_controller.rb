@@ -3,8 +3,34 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
   # GET /tasks or /tasks.json
-  def index
-    @tasks = Task.all
+    def index
+      filter = params[:filter]
+      @tasks = Task.where(user_id: session[:user_id])
+      @atual = 'All tasks'
+
+      case filter
+      when 'no-date'
+        @tasks = @tasks.where(date: nil)
+        @atual = 'No date'
+      when 'today'
+        @tasks = @tasks.where(date: Date.today)
+        @atual = 'Today'
+      when 'this-week'
+        @tasks = @tasks.where(date: Date.today.beginning_of_week..Date.today.end_of_week)
+        @atual = 'This week'
+      when 'this-month'
+        @tasks = @tasks.where(date: Date.today.beginning_of_month..Date.today.end_of_month)
+        @atual = 'This month'
+      when 'favorites'
+        @tasks = @tasks.where(favorited: true)
+        @atual = 'Favorites'
+      when 'completed'
+        @tasks = @tasks.where(completed: true)
+        @atual = 'Complete'
+      when 'overdue'
+        @tasks = @tasks.where("date < ?", Date.today).where(completed: false)
+        @atual = 'Overdue'
+      end
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -55,6 +81,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete
+    @task = Task.find(params[:id])
+    @task.update(completed: true)
+    redirect_to tasks_path
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task

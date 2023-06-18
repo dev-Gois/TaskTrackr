@@ -1,14 +1,18 @@
 <div class="card">
     <div class="content">
-
         <% if task.tag %>
-        <div class="ui right floated <%= task.tag.color %> label">Matheus</div>
+        <div class="ui right floated <%= task.tag.color %> label"> <%= task.tag.title %></div>
         <% end %>
 
-        <div class="header"><%= task.title %></div>
+        <div class="header"><%= task.title %>
+        <% if task.completed %>
+        <i class="check circle icon"></i>
+        <% end %>
+        </div>
+        
 
         <% if task.list %>
-        <div class="meta"><%= task.list %></div>
+        <div class="meta"><%= task.list.title %></div>
         <% else %>
         <div class="meta">None</div>
         <% end %>
@@ -17,9 +21,13 @@
     </div>
     <div class="extra content">
         <div class="ui buttons">
-            <button class="ui green basic button">Complete</button>
-            <button class="ui blue basic button">Edit</button>
-            <%= button_to "Delete", task_path(task.id), method: :delete, class: "ui red basic button" %>
+            <% if task.completed %>
+            <button class="ui green disabled button">Complete</button>
+            <% else %>
+            <%= button_to "Complete", update_completed_path(id: task.id), method: :patch, class: "ui green button" %>
+            <% end %>
+            <button class="ui blue button">Edit</button>
+            <%= button_to "Delete", task_path(task.id), method: :delete, class: "ui red button" %>
         </div>
     </div>
 </div>
