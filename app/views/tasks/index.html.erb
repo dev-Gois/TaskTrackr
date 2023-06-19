@@ -44,11 +44,12 @@
     <% end %>
 
 
-    <a class="item">
+    <%= link_to tasks_path, class: 'item' do %>
         <i class="th list icon"></i>
         All tasks
-    </a>
-    <a class="item">
+    <% end %>
+
+    <a class="item" onclick="toggleModalList()">
         <i class="calendar plus icon"></i>
         Create new list
     </a>
@@ -112,6 +113,21 @@
                 <% @tasks.each do |task| %>
                 <%= render task %>
                 <% end %>
+            </div>
+        </div>
+        <div class="ui mini modal">
+            <div class="header">List Creation</div>
+            <div class="content">
+            <div class="ui input center aligned">
+                <input type="text" name="List name" class="" placeholder="List name">
+            </div>
+            </div>
+            <div class="actions">
+                <div class="ui deny red button">Cancel</div>
+                <div class="ui positive right labeled icon button">
+                    Create
+                    <i class="checkmark icon"></i>    
+                </div>
             </div>
         </div>
     </div>

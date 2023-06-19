@@ -1,3 +1,6 @@
+function toggleModalList() {
+    $('.mini.modal').modal('show');
+}
 
 function toggleSidebar() {
     $('#menuLateral').sidebar('toggle');
@@ -5,5 +8,7 @@ function toggleSidebar() {
 
 $(document).ready(function() {
     $('.ui.dropdown').dropdown();
+
 });
-  
+
+
