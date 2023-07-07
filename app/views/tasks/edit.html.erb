@@ -1,10 +1,97 @@
-<h1>Editing task</h1>
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'tasks.css' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    
+<% end %>
 
-<%= render "form", task: @task %>
+<%= render 'lateral_bar'%>
 
-<br>
+<div class="pusher">
+    <div class="full height">
+        <div class="following bar">
+            <div class="ui massive secondary violet network menu inverted">
+                <%= link_to tasks_path, class: "item" do %>
+                    <i class="bordered inverted violet rocket icon"></i>
+                    TaskTrackr
+                <% end %>
 
-<div>
-  <%= link_to "Show this task", @task %> |
-  <%= link_to "Back to tasks", tasks_path %>
+                <a class="ui item" onclick="toggleSidebar()">
+                    <i class="sidebar icon"></i>
+                    Menu
+                </a>
+                <div class="ui big inverted segment center aligned centered"> <!-- Adicionei a classe "center aligned" aqui -->
+                    <i class="archive icon"></i>
+                    Current: <%= @task.title %>
+                </div>
+                <div class="right menu inverted">
+                    <div class="ui pointing dropdown item" id="accountDropdown" onclick="toggleDropdown()">
+                        <i class="user circle icon"></i>
+                        Account
+                        <div class="menu">
+                            <a class="item" onclick="toggleUserConfigs()">
+                                <i class="cog icon"></i>
+                                Settings
+                            </a>
+                            <a class="item">
+                                <%= button_to logout_path, method: :delete, class: "ui inverted red button" do %>
+                                <i class="power off icon"></i>
+                                Logout
+                                <% end %>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="ui massive segment">
+            <div class="ui center aligned icon header">
+                <i class="file alternate outline icon"></i>
+                <div class="content">Edit: <%= @task.title %></div>
+            </div>
+            <%= form_with(model: @task, class: 'ui form') do |f| %>
+                <div class="field">
+                    <%= f.label :title, "Title" %>
+                    <%= f.text_field :title %>
+                </div>
+                <div class="field">
+                    <%= f.label :description, "Description" %>
+                    <%= f.text_field :description %>
+                </div>
+                <div class="field">
+                    <%= f.label :date, "Date" %>
+                    <%= f.date_field :date %>
+                </div>
+                <div class="field">
+                    <%= f.label :completed, "Completed" %>
+                    <%= f.check_box :completed %>
+                </div>
+                <div class="field">
+                    <%= f.label :favorited, "Favorited" %>
+                    <%= f.check_box :favorited %>
+                </div>
+                <div class="field">
+                    <%= f.label :list_id, "Lista" %>
+                    <% lists_with_empty = @user.lists.to_a.prepend(OpenStruct.new(id: nil, title: 'None')) %>
+                    <%= f.collection_select :list_id, lists_with_empty, :id, :title %>
+                </div>
+                <div class="field">
+                    <%= f.label :tag_id, "Tag" %>
+                    <% tags_with_empty = @user.tags.to_a.prepend(OpenStruct.new(id: nil, title: 'None')) %>
+                    <%= f.collection_select :tag_id, tags_with_empty, :id, :title %>
+                </div>
+
+                <%= f.submit "Submit", class: 'ui blue button' %>
+            <% end %>
+
+        </div>
+        <%= render 'list_creation' %>
+        <%= render 'list_delete' %>
+        <%= render 'tag_creation' %>
+        <%= render 'tag_delete' %>
+        <%= render 'user_configs' %>
+    </div>
 </div>
+<%= javascript_include_tag 'tasks.js' %>

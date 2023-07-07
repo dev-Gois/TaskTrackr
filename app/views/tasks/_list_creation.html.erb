@@ -1,0 +1,13 @@
+<div class="ui mini modal" id="listCreation">
+    <div class="header">List Creation</div>
+        <div class="content">
+            <%= form_with(url: lists_path, class: 'ui form') do |f| %>
+                <%= f.text_field :title, placeholder: 'List name' %>
+                <div class="actions">
+                    <div class="ui deny red button">Cancel</div>
+                    <%= f.submit "Create", class: "ui green button" %>
+                </div>
+        </div>
+    </div>
+    <% end %>
+</div>

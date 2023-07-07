@@ -1,0 +1,16 @@
+<div class="ui mini modal" id="listDelete">
+  <div class="header">Delete List</div>
+  <div class="content">
+<div class="ui list">
+  <% @user.lists.each do |list| %>
+    <div class="item">
+      <%= list.title %>
+      <%= button_to "Delete", list_path(list), class: 'ui mini red button', method: :delete, remote: true %>
+    </div>
+  <% end %>
+</div>
+      <div class="actions">
+        <div class="ui deny black button">Cancel</div>
+      </div>
+  </div>
+</div>

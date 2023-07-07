@@ -1,27 +1,33 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
+<div class="card">
+    <div class="content">
+        <% if task.tag %>
+        <div class="ui right floated <%= task.tag.color %> label"> <%= task.tag.title %></div>
+        <% end %>
 
-  <p>
-    <strong>Description:</strong>
-    <%= task.description %>
-  </p>
+        <div class="header"><%= task.title %>
+        <% if task.completed %>
+        <i class="check circle icon"></i>
+        <% end %>
+        </div>
+        
 
-  <p>
-    <strong>Repeat:</strong>
-    <%= task.repeat %>
-  </p>
+        <% if task.list %>
+        <div class="meta"><%= task.list.title %></div>
+        <% else %>
+        <div class="meta">None</div>
+        <% end %>
 
-  <p>
-    <strong>Date:</strong>
-    <%= task.date %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= task.user_id %>
-  </p>
-
+        <div class="description"><%= task.description%></div>
+    </div>
+    <div class="extra content">
+        <div class="ui buttons">
+            <% if task.completed %>
+            <button class="ui green disabled button">Complete</button>
+            <% else %>
+            <%= button_to "Complete", update_completed_path(id: task.id), method: :patch, class: "ui green button" %>
+            <% end %>
+            <%= button_to "Edit", edit_task_path(task.id), method: :get, class: "ui blue button openModalButton" %>
+            <%= button_to "Delete", task_path(task.id), method: :delete, class: "ui red button" %>
+        </div>
+    </div>
 </div>
