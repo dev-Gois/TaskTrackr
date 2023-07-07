@@ -1,0 +1,16 @@
+<div class="ui mini modal" id="tagDelete">
+  <div class="header">Delete Tag</div>
+  <div class="content">
+<div class="ui list">
+  <% @user.tags.each do |tag| %>
+    <div class="item">
+      <%= tag.title %>
+      <%= button_to "Delete", tag_path(tag), class: 'ui mini red button', method: :delete, remote: true %>
+    </div>
+  <% end %>
+</div>
+      <div class="actions">
+        <div class="ui deny black button">Cancel</div>
+      </div>
+  </div>
+</div>

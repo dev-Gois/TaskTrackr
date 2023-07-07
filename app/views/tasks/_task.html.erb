@@ -26,7 +26,7 @@
             <% else %>
             <%= button_to "Complete", update_completed_path(id: task.id), method: :patch, class: "ui green button" %>
             <% end %>
-            <button class="ui blue button">Edit</button>
+            <%= button_to "Edit", edit_task_path(task.id), method: :get, class: "ui blue button openModalButton" %>
             <%= button_to "Delete", task_path(task.id), method: :delete, class: "ui red button" %>
         </div>
     </div>

@@ -1,0 +1,29 @@
+<div class="ui mini modal" id="tagCreation">
+    <div class="header">Tag Creation</div>
+        <div class="content">
+            <%= form_with(url: tags_path, class: 'ui form') do |f| %>
+                <%= f.text_field :title, placeholder: 'Tag name' %>
+                <%= f.select :color, options_for_select([
+                    ['Red', 'red'],
+                    ['Orange', 'orange'],
+                    ['Yellow', 'yellow'],
+                    ['Olive', 'olive'],
+                    ['Green', 'green'],
+                    ['Teal', 'teal'],
+                    ['Blue', 'blue'],
+                    ['Violet', 'violet'],
+                    ['Purple', 'purple'],
+                    ['Pink', 'pink'],
+                    ['Brown', 'brown'],
+                    ['Grey', 'grey'],
+                    ['Black', 'Black']
+                    
+                ]) %>
+                <div class="actions">
+                    <div class="ui deny red button">Cancel</div>
+                    <%= f.submit "Create", class: "ui green button" %>
+                </div>
+        </div>
+    </div>
+    <% end %>
+</div>

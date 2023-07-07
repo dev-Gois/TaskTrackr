@@ -23,7 +23,7 @@
                 </a>
                 <div class="ui big inverted segment center aligned centered"> <!-- Adicionei a classe "center aligned" aqui -->
                     <i class="archive icon"></i>
-                    Current: <%= @atual %>
+                    Current: <%= @task.title %>
                 </div>
                 <div class="right menu inverted">
                     <div class="ui pointing dropdown item" id="accountDropdown" onclick="toggleDropdown()">
@@ -48,28 +48,48 @@
         </div>
         <div class="ui massive segment">
             <div class="ui center aligned icon header">
-                <i class="rocket icon"></i>
-                <div class="content">Add a task and conquer your day!</div>
+                <i class="file alternate outline icon"></i>
+                <div class="content">Edit: <%= @task.title %></div>
             </div>
-            <%= form_with(url: tasks_path, class: 'ui huge form') do |f|%>
-            <div class="ui field fluid icon transparent input">
-                <%= f.text_field :title, placeholder: 'Create your tasks here...'%>
-                <i class="sticky note icon"></i>
-            </div>
+            <%= form_with(model: @task, class: 'ui form') do |f| %>
+                <div class="field">
+                    <%= f.label :title, "Title" %>
+                    <%= f.text_field :title %>
+                </div>
+                <div class="field">
+                    <%= f.label :description, "Description" %>
+                    <%= f.text_field :description %>
+                </div>
+                <div class="field">
+                    <%= f.label :date, "Date" %>
+                    <%= f.date_field :date %>
+                </div>
+                <div class="field">
+                    <%= f.label :completed, "Completed" %>
+                    <%= f.check_box :completed %>
+                </div>
+                <div class="field">
+                    <%= f.label :favorited, "Favorited" %>
+                    <%= f.check_box :favorited %>
+                </div>
+                <div class="field">
+                    <%= f.label :list_id, "Lista" %>
+                    <% lists_with_empty = @user.lists.to_a.prepend(OpenStruct.new(id: nil, title: 'None')) %>
+                    <%= f.collection_select :list_id, lists_with_empty, :id, :title %>
+                </div>
+                <div class="field">
+                    <%= f.label :tag_id, "Tag" %>
+                    <% tags_with_empty = @user.tags.to_a.prepend(OpenStruct.new(id: nil, title: 'None')) %>
+                    <%= f.collection_select :tag_id, tags_with_empty, :id, :title %>
+                </div>
+
+                <%= f.submit "Submit", class: 'ui blue button' %>
             <% end %>
-        </div>
-        <div class="ui massive segment">
-            <h1 class="ui header centered">Tasks</h1>
-            <div class="ui divider"></div>
-            <div class="ui cards">
-                <% @tasks.each do |task| %>
-                <%= render task %>
-                <% end %>
-            </div>
+
         </div>
         <%= render 'list_creation' %>
         <%= render 'list_delete' %>
-        <%= render 'tag_creation'%>
+        <%= render 'tag_creation' %>
         <%= render 'tag_delete' %>
         <%= render 'user_configs' %>
     </div>

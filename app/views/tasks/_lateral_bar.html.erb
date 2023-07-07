@@ -1,0 +1,71 @@
+<div class="ui left vertical inverted large sidebar labeled icon menu" id="menuLateral">
+
+    <%= link_to filtered_tasks_path('no-date'), class: 'item' do %>
+        <i class="calendar times outline icon"></i>
+        No date
+    <% end %>
+
+    <%= link_to filtered_tasks_path('today'), class: 'item' do %>
+        <i class="calendar outline icon"></i>
+        Today
+    <% end%>
+
+    <%= link_to filtered_tasks_path('this-week'), class: 'item' do %>
+        <i class="calendar minus outline icon"></i>
+        This week
+    <% end %>
+
+    <%= link_to filtered_tasks_path('this-month'), class: 'item' do %>
+        <i class="calendar alternate outline icon"></i>
+        This month
+    <% end %>
+
+    <%= link_to filtered_tasks_path('favorites'), class: 'item' do %>
+        <i class="star icon"></i>
+        Favorites
+    <% end %>
+
+    <%= link_to filtered_tasks_path('completed'), class: 'item' do %>
+        <i class="calendar check outline icon"></i>
+        Completed
+    <% end %>
+
+    <%= link_to filtered_tasks_path('overdue'), class: 'item' do %>
+        <i class="clock icon"></i>
+        Overdue
+    <% end %>
+
+
+    <%= link_to tasks_path, class: 'item' do %>
+        <i class="th list icon"></i>
+        All tasks
+    <% end %>
+
+    <a class="item" onclick="toggleModalList()">
+        <i class="calendar plus icon"></i>
+        Create new list
+    </a>
+
+    <a class="item" onclick="toggleDeleteList()">
+        <i class="calendar delete icon"></i>
+        Delete list
+    </a>
+
+<% @user.lists.each do |list| %>
+  <% next if list.title.blank? %> 
+  <%= link_to filtered_tasks_path(list.title), class: 'item' do %>
+    <i class="folder icon"></i>
+    <%= list.title %>
+  <% end %>
+<% end %>
+
+    <a class="item" onclick="toggleModalTag()">
+        <i class="tag icon"></i>
+        Create new Tag
+    </a>
+
+    <a class="item" onclick="toggleDeleteTag()">
+        <i class="tags icon"></i>
+        Delete Tag
+    </a>
+</div>
