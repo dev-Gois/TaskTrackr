@@ -30,7 +30,7 @@ TaskTrackr utilizes the following libraries:
 * [iziToast](https://izitoast.marcelodolza.com/) - A lightweight and flexible JavaScript library for displaying beautiful toast notifications.
 * [Typed.js](https://mattboldt.github.io/typed.js/) - A JavaScript library that types out text strings with a typewriter effect.
 * [vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) - A smooth 3D tilt effect library for adding depth to elements on the page.
-
+* [Semantic UI(https://semantic-ui.com/) - A js, css and html style library, i used in the front-end of this application.
 
 ## 💎 Additional Gems
 
