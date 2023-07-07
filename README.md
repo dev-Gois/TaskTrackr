@@ -42,5 +42,3 @@ In addition to the technologies mentioned above, TaskTrackr utilizes the followi
 ## 🚀 Running the Application 
 
 Make sure you have installed Ruby, Ruby on Rails, and PostgreSQL before running the application.
-
-Feel free to explore and enhance TaskTrackr according to your needs. Happy organizing and boosting your productivity with TaskTrackr!
