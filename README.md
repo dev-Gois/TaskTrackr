@@ -41,4 +41,38 @@ In addition to the technologies mentioned above, TaskTrackr utilizes the followi
 
 ## 🚀 Running the Application 
 
-Make sure you have installed Ruby, Ruby on Rails, and PostgreSQL before running the application.
+Make sure you have installed Docker and Docker-compose in your machine.
+
+1. Clone the repository:
+```git
+git clone -b development https://github.com/dev-Gois/TaskTrackr
+```
+2. Navigate to the folder:
+```
+cd TaskTrackr
+```
+3. Run the docker compose:
+```
+docker-compose up
+```
+4. Find the rails container id:
+```
+docker ps
+```
+Example: 
+
+![Example](sample.jpeg)
+
+5. Enter in the container terminal:
+```
+docker exec -it 7c781aa8f1ca sh
+```
+6. Create and migrate the database:
+```
+rails db:create && rails db:migrate
+```
+7. Leave the container terminal:
+```
+exit
+```
+8. Go to localhost:3000 and enjoy :D
